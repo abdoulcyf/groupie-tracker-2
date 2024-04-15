@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/index.css" type="text/css">
+    <title>Groupie Tracker</title>
+</head>
+<body>
+    <div class="header">
+        <h1>Groupie Tracker</h1>
+    </div>
+    
+    <!-- <div class="topnav">
+        <a href="#">Artist 1</a>
+        <a href="#">Artist 2</a>
+        <a href="#">Artist 3</a>
+    </div> -->
+    
+    <div class="row">
+        {{if eq .Type "artist"}}
+            {{range .Artists}}
+                <a href="/artist/{{.Name}}"><div class="column person">
+                    <p class="name"><b>{{.Name}}</b></p>
+                    <img  class="artist-img" src="{{.ImageUrl}}" alt="artist image">
+                </div></a>
+            {{end}}
+        {{end}}
+    </div>
+</body>
+</html>

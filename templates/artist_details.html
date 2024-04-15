@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/index.css" type="text/css">
+    <title>Groupie Tracker</title>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Groupie Tracker</h1>
+    </div>
+
+    <div class="row">
+        {{if eq .Type "artist"}}
+        {{range .Artists}}
+            <div class="column person" id="person1">
+                <div><b>{{.Name}}</b></div>
+                <img class="artist-img" src="{{.ImageUrl}}" alt="artist image">
+                <div><b>Creation Date: </b>{{.CreationDate}}</div>
+                <div><b>First Album: </b>{{.FirstAlbum}}</div><br>
+
+                <!-- Display members -->
+                <div><b>Members:</b></div>
+                <ul>
+                    {{range .Members}}
+                    <li>{{.}}</li>
+                    {{end}}
+                </ul>
+
+                <!-- Display relation -->
+                <div><b>Concerts:</b></div>
+                <ul>
+                    {{range $key, $value := .Relation}}
+                    <li><b>{{$key}}:</b>
+                        <ul>
+                            {{range $value}}
+                            <li>{{.}}</li>
+                            {{end}}
+                        </ul>
+                    </li>
+                    {{end}}
+                </ul>
+            </div>
+        {{end}}
+        {{end}}
+    </div>
+
+</body>
+
+</html>
